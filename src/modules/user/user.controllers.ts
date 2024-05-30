@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Post } from "@nestjs/common";
 import { UserService } from "./user.services";
-import { UserDto, CreateUserDto } from "./user.dto";
+import { CreateUserDto } from "./user.dto";
 import { ResponseData } from "src/global/global.class";
 import { HttpStatus, HttpMessage } from "src/global/htttp.enum";
 
@@ -10,7 +10,6 @@ export class UserController {
 
   @Post("register")
   createUser(@Body() userInfos: CreateUserDto): ResponseData<CreateUserDto> {
-    console.log(userInfos);
     try {
       return new ResponseData<CreateUserDto>(
         this.userService.createUser(userInfos),
